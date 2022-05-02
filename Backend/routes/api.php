@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Product\ProductController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -14,6 +15,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
-});
+Route::get('products', [ProductController::class, 'getAll']);
+Route::get('products/{id}', [ProductController::class, 'get']);
+Route::post('products/post', [ProductController::class, 'post']);
+Route::get('products/search/{id}', [ProductController::class, 'search']);

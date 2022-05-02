@@ -27,9 +27,19 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.css"
+              "src/styles.css",
+              "src/assets/themes/client/css/bootstrap.min.css",
+              "src/assets/themes/client/css/templatemo.css",
+              "src/assets/themes/client/css/custom.css",
+              "src/assets/themes/client/css/fontawesome.min.css"
             ],
-            "scripts": []
+            "scripts": [
+              "src/assets/themes/client/js/jquery-1.11.0.min.js",
+              "src/assets/themes/client/js/jquery-migrate-1.2.1.min.js",
+              "src/assets/themes/client/js/bootstrap.bundle.min.js",
+              "src/assets/themes/client/js/templatemo.js",
+              "src/assets/themes/client/js/custom.js"
+            ]
           },
           "configurations": {
             "production": {
@@ -96,7 +106,8 @@
             "styles": [
               "src/styles.css"
             ],
-            "scripts": []
+            "scripts": [
+            ]
           }
         }
       }
