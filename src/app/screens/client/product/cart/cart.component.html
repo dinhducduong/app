@@ -37,13 +37,27 @@
                         </div>
                       </div>
                       <div class="d-flex flex-row align-items-center">
-                        <div style="width: 50px;">
-                          <h5 class="fw-normal mb-0">{{item.quantity}}</h5>
+                        <div class="col-auto p-4">
+                          <li class="list-inline-item text-right">
+                            <input type="hidden" name="product-quanity" id="product-quanity" value="1">
+                          </li>
+                          <li class="list-inline-item"><button type="button" (click)="decreaseQuantity(item)"
+                              class="btn btn-success" id="btn-minus"><i class="fa fa-minus"
+                                aria-hidden="true"></i></button></li>
+                          <li class="list-inline-item"><span class="badge bg-secondary"
+                              id="var-value">{{item.quantity}}</span></li>
+                          <li class="list-inline-item"><button type="button" (click)="increaseQuantity(item)"
+                              class="btn btn-success" id="btn-plus"><i class="fa fa-plus"
+                                aria-hidden="true"></i></button>
+                          </li>
                         </div>
                         <div style="width: 80px;">
-                          <h5 class="mb-0">{{item.price}}</h5>
+                          <h5 class="mb-0">{{item.price | currency}}</h5>
                         </div>
-                        <a href="#!" style="color: #cecece;"><i class="fas fa-trash-alt"></i></a>
+                        <div class="p-3">
+                          <a (click)="removeCart(item)" [routerLink]="" style="color: #cecece; cursor: pointer;"><i
+                              class="fas fa-trash-alt"></i></a>
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -97,7 +111,7 @@
 
                     <div class="d-flex justify-content-between">
                       <p class="mb-2">Subtotal</p>
-                      <p class="mb-2">{{totalPrice}}</p>
+                      <p class="mb-2">{{totalPrice | currency}}</p>
                     </div>
 
                     <div class="d-flex justify-content-between">
@@ -112,7 +126,7 @@
 
                     <button type="button" class="btn btn-info btn-block btn-lg">
                       <div class="d-flex justify-content-between">
-                        <span >Checkout <i class="fas fa-long-arrow-alt-right ms-2"></i></span>
+                        <span>Checkout <i class="fas fa-long-arrow-alt-right ms-2"></i></span>
                       </div>
                     </button>
 

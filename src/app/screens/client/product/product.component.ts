@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { data } from 'jquery';
+import { ToastrService } from 'ngx-toastr';
 import { CartService } from 'src/app/Services/cart.service';
 import { ProductService } from 'src/app/Services/product.service';
 
@@ -10,23 +10,18 @@ import { ProductService } from 'src/app/Services/product.service';
 })
 export class ProductComponent implements OnInit {
   product: any = [];
-  private items: any[] = [];
-  private total: number = 0;
-
-  constructor(private ProductService: ProductService, private CartServices: CartService) { }
+  itemsCart: any = [];
+  constructor(private ProductService: ProductService, private CartServices: CartService, private toastr: ToastrService) { }
 
   ngOnInit(): void {
     this.ProductService.getAll().subscribe(data => {
       this.product = data
     })
   }
-  postProduct(item: any) {
-    this.ProductService.post(item).subscribe(data => {
-      console.log(data);
-    })
-  }
+
   addToCard(item: any) {
-    var item: any = {
+    let cartDataNull = localStorage.getItem('cart');
+    let itemss: any = {
       id: item.id,
       category_id: item.category_id,
       name: item.name,
@@ -36,30 +31,34 @@ export class ProductComponent implements OnInit {
       color: item.color,
       description: item.description,
       quantity: 1
-    };
-    if (localStorage.getItem('cart') == null) {
-      let cart: any = [];
-      cart.push(JSON.stringify(item));
-      localStorage.setItem('cart', JSON.stringify(cart));
+    }
+    if (cartDataNull == null) {
+      let storeDataGet: any = [
+
+      ];
+      storeDataGet.push(itemss);
+      localStorage.setItem('cart', JSON.stringify(storeDataGet));
+      this.toastr.success('Đã thêm vào giỏ hàng', 'Thông báo');
     } else {
-      let cart: any = JSON.parse(localStorage.getItem('cart') || "{}");
+      var id = item.id;
       let index: number = -1;
-      for (var i = 0; i < cart.length; i++) {
-        let items: any = JSON.parse(cart[i]);
-        if (items.id == item.id) {
+      this.itemsCart = JSON.parse(localStorage.getItem('cart') || "{}");
+      for (let i = 0; i < this.itemsCart.length; i++) {
+        if (parseInt(id) === parseInt(this.itemsCart[i].id)) {
+          this.itemsCart[i].quantity += 1;
           index = i;
           break;
         }
       }
       if (index == -1) {
-        cart.push(JSON.stringify(item));
-        localStorage.setItem('cart', JSON.stringify(cart));
+        this.itemsCart.push(itemss);
+        localStorage.setItem('cart', JSON.stringify(this.itemsCart));
+        this.toastr.success('Đã thêm vào giỏ hàng', 'Thông báo');
       } else {
-        let item: any = JSON.parse(cart[index]);
-        item.quantity += 1;
-        cart[index] = JSON.stringify(item);
-        localStorage.setItem("cart", JSON.stringify(cart));
+        localStorage.setItem('cart', JSON.stringify(this.itemsCart));
+        this.toastr.success('Đã thêm vào giỏ hàng', 'Thông báo');
       }
     }
+
   }
 }

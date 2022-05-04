@@ -9,6 +9,8 @@ import { environment } from 'src/environments/environment';
 export class CartService {
 
   constructor(private http: HttpClient) { }
-
+  getAll(): Observable<any> {
+    return this.http.get<any>(`${environment.product_api}/getCart`);
+  }
 
 }

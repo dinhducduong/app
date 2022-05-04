@@ -31,7 +31,8 @@
               "src/assets/themes/client/css/bootstrap.min.css",
               "src/assets/themes/client/css/templatemo.css",
               "src/assets/themes/client/css/custom.css",
-              "src/assets/themes/client/css/fontawesome.min.css"
+              "src/assets/themes/client/css/fontawesome.min.css",
+              "node_modules/ngx-toastr/toastr.css"
             ],
             "scripts": [
               "src/assets/themes/client/js/jquery-1.11.0.min.js",

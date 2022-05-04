@@ -25,17 +25,20 @@
                 <div class="row">
                   <div class="col-4">
                     <a href="#">
-                      <img class="card-img img-fluid" src="/assets/themes/client/img/product_single_01.jpg" alt="Product Image 1">
+                      <img class="card-img img-fluid" src="/assets/themes/client/img/product_single_01.jpg"
+                        alt="Product Image 1">
                     </a>
                   </div>
                   <div class="col-4">
                     <a href="#">
-                      <img class="card-img img-fluid" src="/assets/themes/client/img/product_single_02.jpg" alt="Product Image 2">
+                      <img class="card-img img-fluid" src="/assets/themes/client/img/product_single_02.jpg"
+                        alt="Product Image 2">
                     </a>
                   </div>
                   <div class="col-4">
                     <a href="#">
-                      <img class="card-img img-fluid" src="/assets/themes/client/img/product_single_03.jpg" alt="Product Image 3">
+                      <img class="card-img img-fluid" src="/assets/themes/client/img/product_single_03.jpg"
+                        alt="Product Image 3">
                     </a>
                   </div>
                 </div>
@@ -47,17 +50,20 @@
                 <div class="row">
                   <div class="col-4">
                     <a href="#">
-                      <img class="card-img img-fluid" src="/assets/themes/client/img/product_single_04.jpg" alt="Product Image 4">
+                      <img class="card-img img-fluid" src="/assets/themes/client/img/product_single_04.jpg"
+                        alt="Product Image 4">
                     </a>
                   </div>
                   <div class="col-4">
                     <a href="#">
-                      <img class="card-img img-fluid" src="/assets/themes/client/img/product_single_05.jpg" alt="Product Image 5">
+                      <img class="card-img img-fluid" src="/assets/themes/client/img/product_single_05.jpg"
+                        alt="Product Image 5">
                     </a>
                   </div>
                   <div class="col-4">
                     <a href="#">
-                      <img class="card-img img-fluid" src="/assets/themes/client/img/product_single_06.jpg" alt="Product Image 6">
+                      <img class="card-img img-fluid" src="/assets/themes/client/img/product_single_06.jpg"
+                        alt="Product Image 6">
                     </a>
                   </div>
                 </div>
@@ -69,17 +75,20 @@
                 <div class="row">
                   <div class="col-4">
                     <a href="#">
-                      <img class="card-img img-fluid" src="/assets/themes/client/img/product_single_07.jpg" alt="Product Image 7">
+                      <img class="card-img img-fluid" src="/assets/themes/client/img/product_single_07.jpg"
+                        alt="Product Image 7">
                     </a>
                   </div>
                   <div class="col-4">
                     <a href="#">
-                      <img class="card-img img-fluid" src="/assets/themes/client/img/product_single_08.jpg" alt="Product Image 8">
+                      <img class="card-img img-fluid" src="/assets/themes/client/img/product_single_08.jpg"
+                        alt="Product Image 8">
                     </a>
                   </div>
                   <div class="col-4">
                     <a href="#">
-                      <img class="card-img img-fluid" src="/assets/themes/client/img/product_single_09.jpg" alt="Product Image 9">
+                      <img class="card-img img-fluid" src="/assets/themes/client/img/product_single_09.jpg"
+                        alt="Product Image 9">
                     </a>
                   </div>
                 </div>
@@ -101,55 +110,61 @@
       </div>
       <!-- col end -->
       <div class="col-lg-7 mt-5">
-        <div class="card">
-          <div class="card-body">
-            <h1 class="h2">{{product.name}}</h1>
-            <p class="h3 py-2">{{product.price}}</p>
-            <p class="py-2">
-              <i class="fa fa-star text-warning"></i>
-              <i class="fa fa-star text-warning"></i>
-              <i class="fa fa-star text-warning"></i>
-              <i class="fa fa-star text-warning"></i>
-              <i class="fa fa-star text-secondary"></i>
-              <span class="list-inline-item text-dark">Rating 4.8 | 36 Comments</span>
-            </p>
+        <form (onsubmit)="addToCart()" [formGroup]="dataForm">
+          <div class="card">
+            <div class="card-body">
+              <h1 class="h2">{{product.name}}</h1>
+              <p class="h3 py-2">{{product.price |currency}}</p>
+              <p class="py-2">
+                <i class="fa fa-star text-warning"></i>
+                <i class="fa fa-star text-warning"></i>
+                <i class="fa fa-star text-warning"></i>
+                <i class="fa fa-star text-warning"></i>
+                <i class="fa fa-star text-secondary"></i>
+                <span class="list-inline-item text-dark">Rating 4.8 | 36 Comments</span>
+              </p>
 
 
-            <h6>Description:</h6>
-            <p>{{product.description}}</p>
-            <ul class="list-inline">
-              <li class="list-inline-item">
-                <h6>Avaliable Color :</h6>
-              </li>
-              <li class="list-inline-item">
-                <p class="text-muted"><strong>White / Black</strong></p>
-              </li>
-            </ul>
+              <h6>Mô tả:</h6>
+              <p>{{product.description}}</p>
+              <ul class="list-inline">
+                <li class="list-inline-item">
+                  <h6>Màu sắc :</h6>
+                </li>
+                <li class="list-inline-item">
+                  <select class="form-control" formControlName="color" id="">
+                    <option value="1">Red</option>
+                    <option value="2">White</option>
+                    <option value="3">Black</option>
+                    <option value="4">Orange</option>
+                  </select>
+                </li>
 
-
-            <form action="" method="GET">
+              </ul>
               <input type="hidden" name="product-title" value="Activewear">
               <div class="row">
                 <div class="col-auto">
-                  <ul class="list-inline pb-3">
-                    <li class="list-inline-item">Size :
-                      <input type="hidden" name="product-size" id="product-size" value="S">
+                  Size:
+                  <ng-container *ngFor="let item of formSize;index as i">
+                    <li class="list-inline-item pb-4"><label
+                        class=" {{valueColorSize === item ? 'btn btn-secondary' : 'btn btn-success '}}"
+                        for="size{{i}}">{{formText[i]}}</label>
                     </li>
-                    <li class="list-inline-item"><span class="btn btn-success btn-size">S</span></li>
-                    <li class="list-inline-item"><span class="btn btn-success btn-size">M</span></li>
-                    <li class="list-inline-item"><span class="btn btn-success btn-size">L</span></li>
-                    <li class="list-inline-item"><span class="btn btn-success btn-size">XL</span></li>
-                  </ul>
+                    <input value="{{formText[i]}}" type="radio" formControlName="size" class="d-none" id="size{{i}}"
+                      name="size" (change)="select_size(item)">
+                  </ng-container>
                 </div>
                 <div class="col-auto">
                   <ul class="list-inline pb-3">
                     <li class="list-inline-item text-right">
-                      Quantity
-                      <input type="hidden" name="product-quanity" id="product-quanity" value="1">
+                      Số lượng
+                      <input type="number" formControlName="quantity" id="product-quanity" value="{{qnt}}">
                     </li>
-                    <li class="list-inline-item"><span class="btn btn-success" id="btn-minus">-</span></li>
+                    <li class="list-inline-item"><span (change)="increaseQuantity()" class="btn btn-success"
+                        id="btn-minus"><i class="fa fa-minus" aria-hidden="true"></i></span></li>
                     <li class="list-inline-item"><span class="badge bg-secondary" id="var-value">1</span></li>
-                    <li class="list-inline-item"><span class="btn btn-success" id="btn-plus">+</span></li>
+                    <li class="list-inline-item"><span (change)="decreaseQuantity()" class="btn btn-success"
+                        id="btn-plus"><i class="fa fa-plus" aria-hidden="true"></i></span></li>
                   </ul>
                 </div>
               </div>
@@ -158,15 +173,14 @@
                   <button type="submit" class="btn btn-success btn-lg" name="submit" value="buy">Buy</button>
                 </div>
                 <div class="col d-grid">
-                  <button type="submit" class="btn btn-success btn-lg" name="submit" value="addtocard">Add To
+                  <button (click)="addToCart()" class="btn btn-success btn-lg" name="submit" value="addtocard">Add To
                     Cart</button>
                 </div>
               </div>
-            </form>
 
+            </div>
           </div>
-        </div>
-
+        </form>
       </div>
     </div>
   </div>

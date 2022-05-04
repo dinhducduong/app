@@ -15,7 +15,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('products', [ProductController::class, 'getAll']);
-Route::get('products/{id}', [ProductController::class, 'get']);
-Route::post('products/post', [ProductController::class, 'post']);
-Route::get('products/search/{id}', [ProductController::class, 'search']);
+Route::prefix('products')->group(function () {
+    Route::get('/', [ProductController::class, 'getAll']);
+    Route::get('/{id}', [ProductController::class, 'get']);
+    Route::post('/addToCart', [ProductController::class, 'addToCart']);
+    Route::get('/getCart', [ProductController::class, 'getCarts']);
+});
