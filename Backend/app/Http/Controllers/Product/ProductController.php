@@ -20,15 +20,4 @@ class ProductController extends Controller
         $product = Product::find($id);
         return response()->json($product);
     }
-    public function addToCart(Request $request)
-    {
-        session()->put('key', 'value');
-        dd(session()->get('key'));
-    }
-    public function getCarts(Request $request)
-    {
-        $cart = session()->get('key');
-        $product = Product::get();
-        return response()->json($cart);
-    }
 }

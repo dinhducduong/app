@@ -3,8 +3,7 @@
     <div class="row">
       <div class="col-lg-5 mt-5">
         <div class="card mb-3">
-          <img class="card-img img-fluid" src="/assets/themes/client/img/product_single_10.jpg" alt="Card image cap"
-            id="product-detail">
+          <img class="card-img img-fluid" src="{{product.images}}" alt="Card image cap" id="product-detail">
         </div>
         <div class="row">
           <!--Start Controls-->
@@ -110,7 +109,7 @@
       </div>
       <!-- col end -->
       <div class="col-lg-7 mt-5">
-        <form (onsubmit)="addToCart()" [formGroup]="dataForm">
+        <form [formGroup]="dataForm">
           <div class="card">
             <div class="card-body">
               <h1 class="h2">{{product.name}}</h1>
@@ -121,7 +120,7 @@
                 <i class="fa fa-star text-warning"></i>
                 <i class="fa fa-star text-warning"></i>
                 <i class="fa fa-star text-secondary"></i>
-                <span class="list-inline-item text-dark">Rating 4.8 | 36 Comments</span>
+                <span class="list-inline-item text-dark">Đánh giá 4.8 | 36 Bình luận</span>
               </p>
 
 
@@ -132,11 +131,11 @@
                   <h6>Màu sắc :</h6>
                 </li>
                 <li class="list-inline-item">
-                  <select class="form-control" formControlName="color" id="">
-                    <option value="1">Red</option>
-                    <option value="2">White</option>
-                    <option value="3">Black</option>
-                    <option value="4">Orange</option>
+                  <select class="form-control" formControlName="color" id="" [(ngModel)]="modelColor">
+                    <option value="Red">Red</option>
+                    <option value="White">White</option>
+                    <option value="Black">Black</option>
+                    <option value="Orange">Orange</option>
                   </select>
                 </li>
 
@@ -150,31 +149,33 @@
                         class=" {{valueColorSize === item ? 'btn btn-secondary' : 'btn btn-success '}}"
                         for="size{{i}}">{{formText[i]}}</label>
                     </li>
-                    <input value="{{formText[i]}}" type="radio" formControlName="size" class="d-none" id="size{{i}}"
-                      name="size" (change)="select_size(item)">
+                    <input [(ngModel)]="modelSize" value="{{formText[i]}}" type="radio" formControlName="size"
+                      class="d-none" id="size{{i}}" name="size" (change)="select_size(item)">
                   </ng-container>
                 </div>
                 <div class="col-auto">
                   <ul class="list-inline pb-3">
                     <li class="list-inline-item text-right">
                       Số lượng
-                      <input type="number" formControlName="quantity" id="product-quanity" value="{{qnt}}">
+                      <input type="hidden" formControlName="quantity" id="product-quanity" value="{{qnt}}"
+                        [(ngModel)]="qnt">
                     </li>
-                    <li class="list-inline-item"><span (change)="increaseQuantity()" class="btn btn-success"
+                    <li class="list-inline-item"><span (click)="decreaseQuantity()" class="btn btn-success"
                         id="btn-minus"><i class="fa fa-minus" aria-hidden="true"></i></span></li>
                     <li class="list-inline-item"><span class="badge bg-secondary" id="var-value">1</span></li>
-                    <li class="list-inline-item"><span (change)="decreaseQuantity()" class="btn btn-success"
+                    <li class="list-inline-item"><span (click)="increaseQuantity()" class="btn btn-success"
                         id="btn-plus"><i class="fa fa-plus" aria-hidden="true"></i></span></li>
                   </ul>
                 </div>
               </div>
               <div class="row pb-3">
+
                 <div class="col d-grid">
-                  <button type="submit" class="btn btn-success btn-lg" name="submit" value="buy">Buy</button>
+                  <button (click)="addToCart(product)" class="btn btn-success btn-lg" name="submit"
+                    value="addtocard">Thêm vào giỏ hàng</button>
                 </div>
                 <div class="col d-grid">
-                  <button (click)="addToCart()" class="btn btn-success btn-lg" name="submit" value="addtocard">Add To
-                    Cart</button>
+
                 </div>
               </div>
 

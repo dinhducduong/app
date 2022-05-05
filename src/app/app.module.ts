@@ -16,7 +16,9 @@ import { LOCALE_ID } from '@angular/core';
 import { registerLocaleData } from '@angular/common';
 import localeFr from '@angular/common/locales/fr';
 import { CurrencyPipe } from './Pipes/currency.pipe';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { LazyLoadImageModule } from 'ng-lazyload-image';
+
 registerLocaleData(localeFr);
 @NgModule({
   declarations: [
@@ -36,7 +38,7 @@ registerLocaleData(localeFr);
     HttpClientModule,
     ToastrModule.forRoot(),
     CommonModule,
-    ReactiveFormsModule
+    ReactiveFormsModule, LazyLoadImageModule, FormsModule
   ],
   providers: [{
     provide: LOCALE_ID,

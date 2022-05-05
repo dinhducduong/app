@@ -22,14 +22,12 @@
                           class="fas fa-angle-down mt-1"></i></a></p>
                   </div>
                 </div>
-                <div class="card mb-3" *ngFor="let item of items">
+                <div class="card mb-3" *ngFor="let item of items;index as i">
                   <div class="card-body">
                     <div class="d-flex justify-content-between">
                       <div class="d-flex flex-row align-items-center">
                         <div>
-                          <img
-                            src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-shopping-carts/img1.webp"
-                            class="img-fluid rounded-3" alt="Shopping item" style="width: 65px;">
+                          <img [src]="item.images" class="img-fluid rounded-3" style="width: 65px;">
                         </div>
                         <div class="ms-3">
                           <h5>{{item.name}}</h5>
@@ -74,59 +72,93 @@
                     </div>
 
                     <p class="small mb-2 text-danger">Lưu ý (Điền đúng thông tin để nhận hàng)</p>
-                    <a href="#!" type="submit" class="text-white"><i class="fab fa-cc-mastercard fa-2x me-2"></i></a>
-                    <a href="#!" type="submit" class="text-white"><i class="fab fa-cc-visa fa-2x me-2"></i></a>
-                    <a href="#!" type="submit" class="text-white"><i class="fab fa-cc-amex fa-2x me-2"></i></a>
-                    <a href="#!" type="submit" class="text-white"><i class="fab fa-cc-paypal fa-2x"></i></a>
-
-                    <form class="mt-4">
-                      <div class="form-outline form-white mb-4">
-                        <input type="text" id="typeName" class="form-control form-control-lg" siez="17"
-                          placeholder="Cardholder's Name" />
+                    <form class="mt-4" [formGroup]="formOrder">
+                      <div class=" form-outline form-white mb-4">
+                        <input
+                          [ngClass]="{'is-invalid': formOrder.controls['name'].invalid &&(formOrder.controls['name'].touched || formOrder.controls['name'].dirty)}"
+                          formControlName="name" type="text" id="typeName" class="form-control form-control-lg"
+                          siez="17" placeholder="Họ và tên" />
+                        <div
+                          *ngIf="formOrder.controls['name'].invalid &&(formOrder.controls['name'].touched || formOrder.controls['name'].dirty)"
+                          class="invalid-feedback">
+                          <div>Vui lòng nhập họ tên</div>
+                        </div>
                       </div>
 
                       <div class="form-outline form-white mb-4">
-                        <input type="text" id="typeText" class="form-control form-control-lg" siez="17"
-                          placeholder="1234 5678 9012 3457" minlength="19" maxlength="19" />
+                        <input
+                          [ngClass]="{'is-invalid': formOrder.controls['phone'].invalid &&(formOrder.controls['phone'].touched || formOrder.controls['phone'].dirty)}"
+                          formControlName="phone" type="number" id="typeText" class="form-control form-control-lg"
+                          siez="17" placeholder="Số điện thoại (+84 xxx xxx xxx)" />
+                        <div
+                          *ngIf="formOrder.controls['phone'].invalid &&(formOrder.controls['phone'].touched || formOrder.controls['phone'].dirty)"
+                          class="invalid-feedback">
+                          <div *ngIf="formOrder.controls['phone'].errors?.['required']">Vui
+                            lòng nhập số điện thoại</div>
+                          <div *ngIf="formOrder.controls['phone'].errors?.['pattern']">Số điện thoại không đúng định
+                            dạng</div>
+                        </div>
+                      </div>
+
+                      <div class="form-outline form-white mb-4">
+                        <input
+                          [ngClass]="{'is-invalid': formOrder.controls['email'].invalid &&(formOrder.controls['email'].touched || formOrder.controls['email'].dirty)}"
+                          formControlName="email" type="text" id="typeText" class="form-control form-control-lg"
+                          siez="17" placeholder="Email" />
+                        <div
+                          *ngIf="formOrder.controls['email'].invalid &&(formOrder.controls['email'].touched || formOrder.controls['email'].dirty)"
+                          class="invalid-feedback">
+                          <div *ngIf="formOrder.controls['email'].errors?.['required']">Vui
+                            lòng nhập Email</div>
+                          <div *ngIf="formOrder.controls['email'].errors?.['email']">Email không đúng định
+                            dạng</div>
+                        </div>
                       </div>
 
                       <div class="row mb-4">
-                        <div class="col-md-6">
+                        <div class="col-md">
                           <div class="form-outline form-white">
-                            <input type="text" id="typeExp" class="form-control form-control-lg" placeholder="MM/YYYY"
-                              size="7" id="exp" minlength="7" maxlength="7" />
+                            <input
+                              [ngClass]="{'is-invalid': formOrder.controls['address'].invalid &&(formOrder.controls['address'].touched || formOrder.controls['address'].dirty)}"
+                              formControlName="address" type="text" id="typeExp" class="form-control form-control-lg"
+                              placeholder="Địa chỉ" size="7" id="exp" />
+                            <div
+                              *ngIf="formOrder.controls['address'].invalid &&(formOrder.controls['address'].touched || formOrder.controls['address'].dirty)"
+                              class="invalid-feedback">
+                              <div>Vui lòng nhập địa chỉ</div>
+                            </div>
                           </div>
                         </div>
-                        <div class="col-md-6">
-                          <div class="form-outline form-white">
-                            <input type="password" id="typeText" class="form-control form-control-lg"
-                              placeholder="&#9679;&#9679;&#9679;" size="1" minlength="3" maxlength="3" />
-                          </div>
+
+                      </div>
+                      <div class="col-md-6">
+                        <div class="form-outline form-white">
+                          <textarea name="" id="" cols="25" rows="3" placeholder="Ghi chú (Nếu có)"></textarea>
+
                         </div>
                       </div>
-
                     </form>
 
                     <hr class="my-4">
 
                     <div class="d-flex justify-content-between">
-                      <p class="mb-2">Subtotal</p>
+                      <p class="mb-2">Tổng tiền</p>
                       <p class="mb-2">{{totalPrice | currency}}</p>
                     </div>
 
                     <div class="d-flex justify-content-between">
-                      <p class="mb-2">Shipping</p>
+                      <p class="mb-2">Phí vận chuyển</p>
                       <p class="mb-2">$20.00</p>
                     </div>
 
                     <div class="d-flex justify-content-between mb-4">
-                      <p class="mb-2">Total(Incl. taxes)</p>
-                      <p class="mb-2">$4818.00</p>
+                      <p class="mb-2">Thành tiền</p>
+                      <p class="mb-2">{{totalPrice | currency}}</p>
                     </div>
 
-                    <button type="button" class="btn btn-info btn-block btn-lg">
+                    <button (click)="payMen()" type="button" class="btn btn-info btn-block btn-lg">
                       <div class="d-flex justify-content-between">
-                        <span>Checkout <i class="fas fa-long-arrow-alt-right ms-2"></i></span>
+                        <span>Đặt hàng <i class="fas fa-long-arrow-alt-right ms-2"></i></span>
                       </div>
                     </button>
 

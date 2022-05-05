@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Product\OrderController;
 use App\Http\Controllers\Product\ProductController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -18,6 +19,5 @@ use Illuminate\Support\Facades\Route;
 Route::prefix('products')->group(function () {
     Route::get('/', [ProductController::class, 'getAll']);
     Route::get('/{id}', [ProductController::class, 'get']);
-    Route::post('/addToCart', [ProductController::class, 'addToCart']);
-    Route::get('/getCart', [ProductController::class, 'getCarts']);
+    Route::post('/order', [OrderController::class, 'order']);
 });

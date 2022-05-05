@@ -6,14 +6,12 @@ import { ToastrService } from 'ngx-toastr';
   styleUrls: ['./home-layout.component.css']
 })
 export class HomeLayoutComponent implements OnInit {
-
+  countCart: any;
   constructor(private toastr: ToastrService) { }
 
   ngOnInit(): void {
-
-
+    let cart: any = JSON.parse(localStorage.getItem('cart') || "{}");
+    this.countCart = cart;
   }
-  btn() {
-    this.toastr.error('This is a success message', 'Tada');
-  }
+
 }
