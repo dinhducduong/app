@@ -18,6 +18,11 @@ import localeFr from '@angular/common/locales/fr';
 import { CurrencyPipe } from './Pipes/currency.pipe';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { LazyLoadImageModule } from 'ng-lazyload-image';
+import { AdminLayoutComponent } from './screens/admin/admin-layout/admin-layout.component';
+import { HomeAdminComponent } from './screens/admin/home-admin/home-admin.component';
+import { ListCategoryComponent } from './screens/admin/categories/list-category/list-category.component';
+import { AddCategoryComponent } from './screens/admin/categories/add-category/add-category.component';
+import { EditCategoryComponent } from './screens/admin/categories/edit-category/edit-category.component';
 
 registerLocaleData(localeFr);
 @NgModule({
@@ -29,7 +34,12 @@ registerLocaleData(localeFr);
     DetailProductComponent,
     CartComponent,
     AboutComponent,
-    CurrencyPipe
+    CurrencyPipe,
+    AdminLayoutComponent,
+    HomeAdminComponent,
+    ListCategoryComponent,
+    AddCategoryComponent,
+    EditCategoryComponent
   ],
   imports: [
     BrowserModule,

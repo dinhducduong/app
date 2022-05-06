@@ -32,14 +32,26 @@
               "src/assets/themes/client/css/templatemo.css",
               "src/assets/themes/client/css/custom.css",
               "src/assets/themes/client/css/fontawesome.min.css",
-              "node_modules/ngx-toastr/toastr.css"
+              "node_modules/ngx-toastr/toastr.css",
+              "node_modules/admin-lte/plugins/overlayScrollbars/css/OverlayScrollbars.css",
+              "node_modules/admin-lte/dist/css/adminlte.css"
             ],
             "scripts": [
               "src/assets/themes/client/js/jquery-1.11.0.min.js",
               "src/assets/themes/client/js/jquery-migrate-1.2.1.min.js",
               "src/assets/themes/client/js/bootstrap.bundle.min.js",
               "src/assets/themes/client/js/templatemo.js",
-              "src/assets/themes/client/js/custom.js"
+              "src/assets/themes/client/js/custom.js",
+              "node_modules/admin-lte/plugins/jquery/jquery.js",
+              "node_modules/admin-lte/plugins/bootstrap/js/bootstrap.bundle.js",
+              "node_modules/admin-lte/plugins/overlayScrollbars/js/jquery.overlayScrollbars.js",
+              "node_modules/admin-lte/dist/js/adminlte.js",
+              "node_modules/admin-lte/dist/js/demo.js",
+              "node_modules/admin-lte/plugins/jquery-mousewheel/jquery.mousewheel.js",
+              "node_modules/admin-lte/plugins/raphael/raphael.js",
+              "node_modules/admin-lte/plugins/jquery-mapael/jquery.mapael.js",
+              "node_modules/admin-lte/plugins/chart.js/Chart.js"
+
             ]
           },
           "configurations": {

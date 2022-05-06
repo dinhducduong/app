@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Categories\CategoryController;
 use App\Http\Controllers\Product\OrderController;
 use App\Http\Controllers\Product\ProductController;
 use Illuminate\Http\Request;
@@ -20,4 +21,10 @@ Route::prefix('products')->group(function () {
     Route::get('/', [ProductController::class, 'getAll']);
     Route::get('/{id}', [ProductController::class, 'get']);
     Route::post('/order', [OrderController::class, 'order']);
+});
+Route::prefix('categorys')->group(function () {
+    Route::get('/', [CategoryController::class, 'index']);
+    Route::post('/add', [CategoryController::class, 'create']);
+    Route::put('/edit/{id}', [CategoryController::class, 'edit']);
+    Route::delete('/delete/{id}', [CategoryController::class, 'destroy']);
 });
