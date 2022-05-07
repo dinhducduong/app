@@ -1,1 +1,22 @@
-<p>add-category works!</p>
+<div class="card-body">
+  <h4>Thêm danh mục</h4>
+  <a [routerLink]="'/cp-admin/danh-muc'">Danh sách</a>
+  <hr>
+  <form [formGroup]="formCate">
+    <div class="form-group col-lg-6">
+      <label for="exampleInputEmail1">Tên danh mục</label>
+      <input
+        [ngClass]="{'is-invalid': formCate.controls['name'].invalid &&(formCate.controls['name'].touched || formCate.controls['name'].dirty)}"
+        formControlName="name" type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email">
+      <div
+        *ngIf="formCate.controls['name'].invalid &&(formCate.controls['name'].touched || formCate.controls['name'].dirty)"
+        class="invalid-feedback">
+        <div>Vui lòng nhập tên danh mục</div>
+      </div>
+    </div>
+    <div class="form-group">
+      <button (click)="formCate.valid && onSubmit()" [disabled]="formCate.invalid" class=" btn btn-primary">Lưu</button>
+    </div>
+  </form>
+
+</div>

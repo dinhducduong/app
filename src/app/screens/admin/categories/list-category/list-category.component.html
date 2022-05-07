@@ -18,13 +18,16 @@
               aria-label="Browser: activate to sort column ascending">Tên danh mục</th>
             <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1"
               aria-label="Platform(s): activate to sort column ascending">Ngày tạo</th>
+            <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1"
+              aria-label="Platform(s): activate to sort column ascending">Thao tác</th>
           </tr>
         </thead>
         <tbody>
-          <tr role="row" class="odd" *ngFor="let item of cate;index as i">
+          <tr role="row" class="odd"
+            *ngFor="let item of cate | paginate: { itemsPerPage: listPage, currentPage: page, totalItems: totalLength } ; index as i">
             <td class="sorting_1">#{{i+1}}</td>
             <td>{{item.name}}</td>
-            <td>{{item.created_at}}</td>
+            <td>{{item.created_at | date:'HH:mm:ss : dd-MM-yyyy'}}</td>
             <td class="justify-content-center">
               <a class="p-3 text-success" [routerLink]="'edit/'+item.id" style="cursor: pointer;"><i class="fa fa-edit"
                   aria-hidden="true"></i></a>
@@ -37,27 +40,8 @@
     </div>
   </div>
   <div class="row">
-    <div class="col-sm-12 col-md-7">
-      <div class="dataTables_paginate paging_simple_numbers" id="example2_paginate">
-        <ul class="pagination">
-          <li class="paginate_button page-item previous disabled" id="example2_previous"><a href="#"
-              aria-controls="example2" data-dt-idx="0" tabindex="0" class="page-link">Previous</a></li>
-          <li class="paginate_button page-item active"><a href="#" aria-controls="example2" data-dt-idx="1" tabindex="0"
-              class="page-link">1</a></li>
-          <li class="paginate_button page-item "><a href="#" aria-controls="example2" data-dt-idx="2" tabindex="0"
-              class="page-link">2</a></li>
-          <li class="paginate_button page-item "><a href="#" aria-controls="example2" data-dt-idx="3" tabindex="0"
-              class="page-link">3</a></li>
-          <li class="paginate_button page-item "><a href="#" aria-controls="example2" data-dt-idx="4" tabindex="0"
-              class="page-link">4</a></li>
-          <li class="paginate_button page-item "><a href="#" aria-controls="example2" data-dt-idx="5" tabindex="0"
-              class="page-link">5</a></li>
-          <li class="paginate_button page-item "><a href="#" aria-controls="example2" data-dt-idx="6" tabindex="0"
-              class="page-link">6</a></li>
-          <li class="paginate_button page-item next" id="example2_next"><a href="#" aria-controls="example2"
-              data-dt-idx="7" tabindex="0" class="page-link">Next</a></li>
-        </ul>
-      </div>
-    </div>
+    <ul class="pagination justify-content-end pt-3">
+      <pagination-controls (pageChange)="page = $event"></pagination-controls>
+    </ul>
   </div>
 </div>

@@ -23,7 +23,7 @@ import { HomeAdminComponent } from './screens/admin/home-admin/home-admin.compon
 import { ListCategoryComponent } from './screens/admin/categories/list-category/list-category.component';
 import { AddCategoryComponent } from './screens/admin/categories/add-category/add-category.component';
 import { EditCategoryComponent } from './screens/admin/categories/edit-category/edit-category.component';
-
+import { NgxPaginationModule } from 'ngx-pagination';
 registerLocaleData(localeFr);
 @NgModule({
   declarations: [
@@ -48,8 +48,12 @@ registerLocaleData(localeFr);
     HttpClientModule,
     ToastrModule.forRoot(),
     CommonModule,
-    ReactiveFormsModule, LazyLoadImageModule, FormsModule
+    ReactiveFormsModule,
+    LazyLoadImageModule,
+    FormsModule,
+    NgxPaginationModule
   ],
+  exports: [CommonModule, NgxPaginationModule],
   providers: [{
     provide: LOCALE_ID,
     useValue: 'fr-FR' // 'de' for Germany, 'fr' for France ...

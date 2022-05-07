@@ -52,7 +52,7 @@ const routes: Routes = [
         component: AddCategoryComponent,
       },
       {
-        path: "danh-muc/edit/:{id}",
+        path: "danh-muc/edit/:id",
         component: EditCategoryComponent,
       },
     ]

@@ -24,9 +24,10 @@ class CategoryController extends Controller
     }
 
 
-    public function store(Request $request)
+    public function store($id, Request $request)
     {
-        //
+        $cate = Categories::find($id);
+        return response()->json($cate);
     }
 
 
@@ -39,7 +40,6 @@ class CategoryController extends Controller
     public function edit($id, Request $request)
     {
         $cate = Categories::find($id);
-        $cate = new Categories();
         $cate->name = $request->name;
         $cate->save();
         return response()->json($request);

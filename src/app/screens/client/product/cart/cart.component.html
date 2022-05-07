@@ -160,7 +160,7 @@
                       <p class="mb-2">{{totalPrice | currency}}</p>
                     </div>
 
-                    <button (click)="payMen()" [disabled]="formOrder.invalid"
+                    <button (click)="formOrder.valid && payMen()" [disabled]="formOrder.invalid"
                       class="btn btn-info btn-block btn-lg col-5">
                       <div class="d-flex justify-content-between">
                         <span>Đặt hàng <i class="fas fa-long-arrow-alt-right ms-2"></i></span>

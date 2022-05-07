@@ -8,11 +8,15 @@ import Swal from 'sweetalert2'
 })
 export class ListCategoryComponent implements OnInit {
   cate: any;
+  totalLength: any;
+  listPage: number = 10;
+  page: number = 1;
   constructor(private CategoryService: CategoryService) { }
 
   ngOnInit(): void {
     this.CategoryService.getAll().subscribe((data => {
       this.cate = data;
+      this.totalLength = data.length;
     }))
   }
   remove(item: any) {
