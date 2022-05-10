@@ -7,7 +7,7 @@
       <label for="exampleInputEmail1">Tên danh mục</label>
       <input
         [ngClass]="{'is-invalid': formCate.controls['name'].invalid &&(formCate.controls['name'].touched || formCate.controls['name'].dirty)}"
-        formControlName="name" type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email">
+        formControlName="name" type="email" class="form-control" id="exampleInputEmail1" placeholder="Nhập nội dung">
       <div
         *ngIf="formCate.controls['name'].invalid &&(formCate.controls['name'].touched || formCate.controls['name'].dirty)"
         class="invalid-feedback">

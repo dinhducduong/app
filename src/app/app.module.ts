@@ -24,6 +24,12 @@ import { ListCategoryComponent } from './screens/admin/categories/list-category/
 import { AddCategoryComponent } from './screens/admin/categories/add-category/add-category.component';
 import { EditCategoryComponent } from './screens/admin/categories/edit-category/edit-category.component';
 import { NgxPaginationModule } from 'ngx-pagination';
+import { ListProductComponent } from './screens/admin/products/list-product/list-product.component';
+import { AddProductComponent } from './screens/admin/products/add-product/add-product.component';
+import { EditProductComponent } from './screens/admin/products/edit-product/edit-product.component';
+import { environment } from 'src/environments/environment';
+import { AngularFireModule } from '@angular/fire/compat'
+import { AngularFireStorageModule } from '@angular/fire/compat/storage';
 registerLocaleData(localeFr);
 @NgModule({
   declarations: [
@@ -39,7 +45,10 @@ registerLocaleData(localeFr);
     HomeAdminComponent,
     ListCategoryComponent,
     AddCategoryComponent,
-    EditCategoryComponent
+    EditCategoryComponent,
+    ListProductComponent,
+    AddProductComponent,
+    EditProductComponent
   ],
   imports: [
     BrowserModule,
@@ -51,7 +60,9 @@ registerLocaleData(localeFr);
     ReactiveFormsModule,
     LazyLoadImageModule,
     FormsModule,
-    NgxPaginationModule
+    NgxPaginationModule,
+    AngularFireModule.initializeApp(environment.firebaseConfig),
+    AngularFireStorageModule
   ],
   exports: [CommonModule, NgxPaginationModule],
   providers: [{

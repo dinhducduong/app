@@ -21,6 +21,9 @@ Route::prefix('products')->group(function () {
     Route::get('/', [ProductController::class, 'getAll']);
     Route::get('/{id}', [ProductController::class, 'get']);
     Route::post('/order', [OrderController::class, 'order']);
+    Route::post('/add', [ProductController::class, 'create']);
+    Route::put('/edit/{id}', [ProductController::class, 'edit']);
+    Route::delete('/delete/{id}', [ProductController::class, 'destroy']);
 });
 Route::prefix('categorys')->group(function () {
     Route::get('/', [CategoryController::class, 'index']);

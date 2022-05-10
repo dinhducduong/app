@@ -1,0 +1,59 @@
+<div class="card-body  col-lg-6">
+  <form class="" [formGroup]="formProduct" (ngSubmit)="addProduct()">
+    <div class="form-group">
+      <label for="exampleInputEmail1">Tên sản phẩm</label>
+      <input type="text" formControlName="name" class="form-control" id="exampleInputEmail1" placeholder="Nội dung">
+    </div>
+    <div class="form-group">
+      <label for="exampleInputPassword1">Giá</label>
+      <input formControlName="price" type="text" class="form-control" id="exampleInputPassword1" placeholder="Nội dung">
+    </div>
+    <div class="form-group">
+      <label for="exampleInputPassword1">Số lượng</label>
+      <input formControlName="quantity" type="text" class="form-control" id="exampleInputPassword1"
+        placeholder="Nội dung">
+    </div>
+    <div class="form-group">
+      <label for="">Danh mục</label>
+      <select class="form-control" formControlName="category_id" id="">
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label for="exampleInputFile">ảnh đại diện</label>
+      <div class="input-group">
+        <div class="custom-file">
+          <input (change)="saveFileThumail($event)" type="file" class="custom-file-input" id="exampleInputFile">
+          <label class="custom-file-label" for="exampleInputFile">Chọn file</label>
+        </div>
+        <div class="input-group-append">
+          <span class="input-group-text" id="">Tải lên</span>
+        </div>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="exampleInputFile">ảnh chi tiết (Nhiều ảnh)</label>
+      <div class="input-group pt-1">
+        <div class="custom-file">
+          <input (change)="saveFileDetail($event)" multiple="multiple" type="file" class="custom-file-input"
+            id="exampleInputFile">
+          <label class="custom-file-label" for="exampleInputFile">Chọn file</label>
+        </div>
+        <div class="input-group-append">
+          <span class="input-group-text" id="">Tải lên</span>
+        </div>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="exampleInputPassword1">Mô tả</label>
+      <textarea formControlName="description" class="textarea" placeholder="Place some text here"
+        style="width: 100%; height: 200px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;"></textarea>
+    </div>
+
+    <div class="form-group">
+      <button class="btn btn-primary">Thêm</button>
+    </div>
+  </form>
+</div>

@@ -5,6 +5,9 @@ import { AddCategoryComponent } from './screens/admin/categories/add-category/ad
 import { EditCategoryComponent } from './screens/admin/categories/edit-category/edit-category.component';
 import { ListCategoryComponent } from './screens/admin/categories/list-category/list-category.component';
 import { HomeAdminComponent } from './screens/admin/home-admin/home-admin.component';
+import { AddProductComponent } from './screens/admin/products/add-product/add-product.component';
+import { EditProductComponent } from './screens/admin/products/edit-product/edit-product.component';
+import { ListProductComponent } from './screens/admin/products/list-product/list-product.component';
 import { HomeLayoutComponent } from './screens/client/home-layout/home-layout.component'
 import { HomeComponent } from './screens/client/home/home.component'
 import { CartComponent } from './screens/client/product/cart/cart.component';
@@ -54,6 +57,19 @@ const routes: Routes = [
       {
         path: "danh-muc/edit/:id",
         component: EditCategoryComponent,
+      },
+      /////////////////
+      {
+        path: "san-pham",
+        component: ListProductComponent,
+      },
+      {
+        path: "san-pham/add",
+        component: AddProductComponent,
+      },
+      {
+        path: "san-pham/edit/:id",
+        component: EditProductComponent,
       },
     ]
   }
