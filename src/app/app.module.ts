@@ -29,7 +29,9 @@ import { AddProductComponent } from './screens/admin/products/add-product/add-pr
 import { EditProductComponent } from './screens/admin/products/edit-product/edit-product.component';
 import { environment } from 'src/environments/environment';
 import { AngularFireModule } from '@angular/fire/compat'
+import { GoogleLoginProvider, SocialAuthServiceConfig, SocialLoginModule } from 'angularx-social-login'
 import { AngularFireStorageModule } from '@angular/fire/compat/storage';
+import { AuthComponent } from './screens/auth/auth.component';
 registerLocaleData(localeFr);
 @NgModule({
   declarations: [
@@ -48,7 +50,8 @@ registerLocaleData(localeFr);
     EditCategoryComponent,
     ListProductComponent,
     AddProductComponent,
-    EditProductComponent
+    EditProductComponent,
+    AuthComponent
   ],
   imports: [
     BrowserModule,
@@ -62,13 +65,31 @@ registerLocaleData(localeFr);
     FormsModule,
     NgxPaginationModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
-    AngularFireStorageModule
+    AngularFireStorageModule,
+    SocialLoginModule
   ],
   exports: [CommonModule, NgxPaginationModule],
-  providers: [{
-    provide: LOCALE_ID,
-    useValue: 'fr-FR' // 'de' for Germany, 'fr' for France ...
-  }],
+  providers: [
+    {
+      provide: 'SocialAuthServiceConfig',
+      useValue: {
+        autoLogin: false,
+        providers: [
+          {
+            id: GoogleLoginProvider.PROVIDER_ID,
+            provider: new GoogleLoginProvider(
+              environment.GOOGLE_CLIENT_ID
+            )
+          }
+        ],
+        onError: (err) => {
+        }
+      } as SocialAuthServiceConfig,
+    },
+    {
+      provide: LOCALE_ID,
+      useValue: 'fr-FR' // 'de' for Germany, 'fr' for France ...
+    }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

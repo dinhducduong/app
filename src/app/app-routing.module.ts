@@ -13,7 +13,13 @@ import { HomeComponent } from './screens/client/home/home.component'
 import { CartComponent } from './screens/client/product/cart/cart.component';
 import { DetailProductComponent } from './screens/client/product/detail-product/detail-product.component';
 import { ProductComponent } from './screens/client/product/product.component';
+import { AuthComponent } from './screens/auth/auth.component';
+import { AuthGuard } from './helpers/auth.guard';
 const routes: Routes = [
+  {
+    path: "login",
+    component: AuthComponent
+  },
   {
     path: "",
     component: HomeLayoutComponent,
@@ -41,6 +47,7 @@ const routes: Routes = [
   {
     path: "cp-admin",
     component: AdminLayoutComponent,
+    canActivate: [AuthGuard],
     children: [
       {
         path: "",

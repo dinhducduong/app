@@ -8,8 +8,10 @@ import { Component, OnInit } from '@angular/core';
 export class AdminLayoutComponent implements OnInit {
 
   constructor() { }
-  checkClicks: any;
+  name: any;
   ngOnInit(): void {
+    const data = JSON.parse(<any>localStorage.getItem("user"));
+    this.name = data.name
   }
 
 }

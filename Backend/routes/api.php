@@ -3,6 +3,7 @@
 use App\Http\Controllers\Categories\CategoryController;
 use App\Http\Controllers\Product\OrderController;
 use App\Http\Controllers\Product\ProductController;
+use App\Http\Controllers\User\UserController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -32,4 +33,7 @@ Route::prefix('categorys')->group(function () {
     Route::post('/add', [CategoryController::class, 'create']);
     Route::put('/edit/{id}', [CategoryController::class, 'edit']);
     Route::delete('/delete/{id}', [CategoryController::class, 'destroy']);
+});
+Route::prefix('users')->group(function () {
+    Route::post('/add', [UserController::class, 'create']);
 });

@@ -4,8 +4,10 @@
 const BASE_API = "http://127.0.0.1:8000/api/"
 export const environment = {
   production: false,
+  GOOGLE_CLIENT_ID: "879888154859-hq0sasrjdnj9220uleton2ifluv7qtd0.apps.googleusercontent.com",
   product_api: `${BASE_API}products`,
   category_api: `${BASE_API}categorys`,
+  user_api: `${BASE_API}users`,
   firebaseConfig: {
     apiKey: "AIzaSyCUdof8BHr8LfDIZIYDCvDv1e8mjmIpgGY",
     authDomain: "my-app-7bb3f.firebaseapp.com",
