@@ -19,7 +19,17 @@ class ProductController extends Controller
     {
 
         $product = Product::find($id);
+
+
         return response()->json($product);
+    }
+    public function getImage($id, Request $request)
+    {
+
+        $img = ProductDetail::where('id_pro', $id)->get();
+
+
+        return response()->json($img);
     }
     public function create(Request $request)
     {
@@ -28,13 +38,13 @@ class ProductController extends Controller
                 'category_id' => $request->category_id,
                 'name' => $request->name,
                 'price' => $request->price,
-                'images' => $request->images,
+                'images' => "$request->images",
                 'description' => $request->description,
                 'quantity' => $request->quantity,
             ]
         );
 
-        foreach ($request->imagesDetail as $key => $value) {
+        foreach ($request->imagesDetail as $value) {
             $model = new ProductDetail();
             $model->id_pro = $id_pro;
             $model->url = $value['name'];

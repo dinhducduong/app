@@ -15,6 +15,9 @@ export class ProductService {
   get(id: any): Observable<any> {
     return this.http.get<any>(`${environment.product_api}/${id}`);
   }
+  getImages(id: any): Observable<any> {
+    return this.http.get<any>(`${environment.product_api}/getImg/${id}`);
+  }
   addToCart(item: any): Observable<any> {
     return this.http.post<any>(`${environment.product_api}/addToCart`, item);
   }

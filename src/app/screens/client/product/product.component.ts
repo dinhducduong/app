@@ -11,11 +11,15 @@ import { ProductService } from 'src/app/Services/product.service';
 export class ProductComponent implements OnInit {
   product: any = [];
   itemsCart: any = [];
+  totalLength: any;
+  listPage: number = 10;
+  page: number = 1;
   constructor(private ProductService: ProductService, private CartServices: CartService, private toastr: ToastrService) { }
 
   ngOnInit(): void {
     this.ProductService.getAll().subscribe(data => {
       this.product = data
+      console.log(this.product);
     })
   }
 
@@ -27,8 +31,8 @@ export class ProductComponent implements OnInit {
       name: item.name,
       price: item.price,
       images: item.images,
-      size: item.size,
-      color: item.color,
+      size: "M",
+      color: "Red",
       description: item.description,
       quantity: 1
     }

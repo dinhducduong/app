@@ -10,6 +10,7 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class DetailProductComponent implements OnInit {
   product: any = [];
+  urlImage: any;
   id: number = 0;
   valueColorSize: any;
   qnt: number = 1;
@@ -24,6 +25,10 @@ export class DetailProductComponent implements OnInit {
       this.ProductService.get(this.id).subscribe(data => {
         this.product = data
       })
+      this.ProductService.getImages(this.id).subscribe(data => {
+        this.urlImage = data
+      })
+
     })
   }
   dataForm: FormGroup = new FormGroup({

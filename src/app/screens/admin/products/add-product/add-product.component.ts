@@ -4,6 +4,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { async } from '@firebase/util';
 import { ToastrService } from 'ngx-toastr';
 import { finalize } from 'rxjs';
+import { CategoryService } from 'src/app/Services/category.service';
 import { ProductService } from 'src/app/Services/product.service';
 @Component({
   selector: 'app-add-product',
@@ -34,22 +35,24 @@ export class AddProductComponent implements OnInit {
     category_id: new FormControl(''),
   })
 
-  constructor(private fireStorage: AngularFireStorage, private ProductService: ProductService, private toastr: ToastrService) { }
+  constructor(private fireStorage: AngularFireStorage, private ProductService: ProductService, private toastr: ToastrService, private CategoryService: CategoryService) { }
   templateFile: Array<any> = [];
   ImageDetail: any = [];
   ImageThumnail: any = [];
   file: any = [];
   files: any = [];
+  cate: any = [];
   private basePath = '/uploads';
   ngOnInit(): void {
+    this.CategoryService.getAll().subscribe(data => {
+      this.cate = data
+    })
   }
   saveFileDetail(event: any) {
     this.files = event.target.files;
-
   }
   saveFileThumail(event: any) {
     this.file = event.target.files[0];
-
 
   }
 
@@ -62,7 +65,9 @@ export class AddProductComponent implements OnInit {
       .pipe(
         finalize(() => {
           storageRef.getDownloadURL().subscribe(downloadUrl => {
-            localStorage.setItem('imgThum', JSON.stringify(downloadUrl));
+            this.ImageThumnail = downloadUrl
+            localStorage.setItem('imgThum', this.ImageThumnail);
+            this.toastr.success('Thành công', 'Thông báo');
           })
         })
       ).subscribe();
@@ -70,7 +75,7 @@ export class AddProductComponent implements OnInit {
       let item = this.files[i];
       const filePath = `${this.basePath}/${item.name}`;
       const storageRef = this.fireStorage.ref(filePath);
-      this.fireStorage.upload(filePath, this.files)
+      this.fireStorage.upload(filePath, this.files[i])
         .snapshotChanges()
         .pipe(
           finalize(() => {
@@ -83,7 +88,9 @@ export class AddProductComponent implements OnInit {
           })
         ).subscribe();
     }
+
     setTimeout(() => {
+      let urlDetail = JSON.parse(localStorage.getItem('imgDetail') || "{}");
       let dataProduct: any = {
         category_id: this.formProduct.value.category_id,
         name: this.formProduct.value.name,
@@ -91,13 +98,15 @@ export class AddProductComponent implements OnInit {
         images: localStorage.getItem('imgThum'),
         description: this.formProduct.value.description,
         quantity: 1,
-        imagesDetail: JSON.parse(localStorage.getItem('imgDetail') || "{}")
+        imagesDetail: urlDetail
       }
 
       this.ProductService.addProduct(dataProduct).subscribe((data => {
-        this.toastr.success('Thành công', 'Thông báo');
+
+        localStorage.removeItem("imgThum");
+        localStorage.removeItem("imgDetail");
       }));
-    }, 5000);
+    }, 8000);
 
   }
 }
