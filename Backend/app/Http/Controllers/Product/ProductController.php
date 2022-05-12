@@ -63,7 +63,8 @@ class ProductController extends Controller
 
     public function show($id)
     {
-        //
+        $pro = Product::where('category_id', $id)->get();
+        return response()->json($pro);
     }
 
 

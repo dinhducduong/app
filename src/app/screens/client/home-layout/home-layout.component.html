@@ -5,9 +5,10 @@
       <div class="w-100 d-flex justify-content-between">
         <div>
           <i class="fa fa-envelope mx-2"></i>
-          <a class="navbar-sm-brand text-light text-decoration-none" href="mailto:info@company.com">info@company.com</a>
+          <a class="navbar-sm-brand text-light text-decoration-none"
+            href="dinhducduong2002@gmail.com">dinhducduong2002@gmail.com</a>
           <i class="fa fa-phone mx-2"></i>
-          <a class="navbar-sm-brand text-light text-decoration-none" href="tel:010-020-0340">010-020-0340</a>
+          <a class="navbar-sm-brand text-light text-decoration-none" href="tel:0383530895">0383530895</a>
         </div>
         <div>
           <a class="text-light" href="https://fb.com/templatemo" target="_blank" rel="sponsored"><i
@@ -29,10 +30,9 @@
   <nav class="navbar navbar-expand-lg navbar-light shadow">
     <div class="container d-flex justify-content-between align-items-center">
 
-      <a class="navbar-brand text-success logo h1 align-self-center" href="/">
-        Zay
+      <a class="navbar-brand text-success logo h1 align-self-center" [routerLink]="'/'">
+        Mini Shop
       </a>
-
       <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse"
         data-bs-target="#templatemo_main_nav" aria-controls="navbarSupportedContent" aria-expanded="false"
         aria-label="Toggle navigation">
@@ -44,16 +44,16 @@
         <div class="flex-fill">
           <ul class="nav navbar-nav d-flex justify-content-between mx-lg-auto">
             <li class="nav-item">
-              <a class="nav-link" href="/">Home</a>
+              <a class="nav-link" [routerLink]="'/'">Trang chủ</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" [routerLink]="'tin-tuc'">About</a>
+              <a class="nav-link" [routerLink]="'tin-tuc'">Tin tức</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" [routerLink]="'san-pham'">Shop</a>
+              <a class="nav-link" [routerLink]="'san-pham'">Sản phẩm</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="contact.html">Contact</a>
+              <a class="nav-link" [routerLink]="''">Liên hệ</a>
             </li>
           </ul>
         </div>
@@ -114,19 +114,19 @@
       <div class="row">
 
         <div class="col-md-4 pt-5">
-          <h2 class="h2 text-success border-bottom pb-3 border-light logo">Zay Shop</h2>
+          <h2 class="h2 text-success border-bottom pb-3 border-light logo">Mini Shop</h2>
           <ul class="list-unstyled text-light footer-link-list">
             <li>
               <i class="fas fa-map-marker-alt fa-fw"></i>
-              123 Consectetur at ligula 10660
+              Quảng Ninh
             </li>
             <li>
               <i class="fa fa-phone fa-fw"></i>
-              <a class="text-decoration-none" href="tel:010-020-0340">010-020-0340</a>
+              <a class="text-decoration-none" href="tel:0383530895">0383530895</a>
             </li>
             <li>
               <i class="fa fa-envelope fa-fw"></i>
-              <a class="text-decoration-none" href="mailto:info@company.com">info@company.com</a>
+              <a class="text-decoration-none" href="mailto:dinhducduong2002@gmail.com">dinhducduong2002@gmail.com</a>
             </li>
           </ul>
         </div>
@@ -197,8 +197,7 @@
         <div class="row pt-2">
           <div class="col-12">
             <p class="text-left text-light">
-              Copyright &copy; 2021 Company Name
-              | Designed by <a rel="sponsored" href="https://templatemo.com" target="_blank">TemplateMo</a>
+              Copyright &copy; 2021 Company Name<a rel="sponsored" target="_blank"></a>
             </p>
           </div>
         </div>

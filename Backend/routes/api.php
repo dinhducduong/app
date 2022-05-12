@@ -21,6 +21,7 @@ use Illuminate\Support\Facades\Route;
 Route::prefix('products')->group(function () {
     Route::get('/', [ProductController::class, 'getAll']);
     Route::get('/{id}', [ProductController::class, 'get']);
+    Route::get('filter/{id}', [ProductController::class, 'show']);
     Route::get('/getImg/{id}', [ProductController::class, 'getImage']);
     Route::post('/order', [OrderController::class, 'order']);
     Route::post('/add', [ProductController::class, 'create']);

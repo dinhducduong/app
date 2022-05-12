@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
 import { CartService } from 'src/app/Services/cart.service';
+import { CategoryService } from 'src/app/Services/category.service';
 import { ProductService } from 'src/app/Services/product.service';
 
 @Component({
@@ -10,19 +11,31 @@ import { ProductService } from 'src/app/Services/product.service';
 })
 export class ProductComponent implements OnInit {
   product: any = [];
+  cate: any = [];
   itemsCart: any = [];
   totalLength: any;
   listPage: number = 10;
   page: number = 1;
-  constructor(private ProductService: ProductService, private CartServices: CartService, private toastr: ToastrService) { }
+  constructor(private ProductService: ProductService, private CartServices: CartService, private toastr: ToastrService, private CategoryService: CategoryService) { }
 
   ngOnInit(): void {
     this.ProductService.getAll().subscribe(data => {
       this.product = data
-      console.log(this.product);
+    })
+    this.CategoryService.getAll().subscribe(data => {
+      this.cate = data
     })
   }
-
+  filterCate(id: any) {
+    this.ProductService.getFilter(id).subscribe(data => {
+      this.product = data
+    })
+  }
+  filterAll() {
+    this.ProductService.getAll().subscribe(data => {
+      this.product = data
+    })
+  }
   addToCard(item: any) {
     let cartDataNull = localStorage.getItem('cart');
     let itemss: any = {

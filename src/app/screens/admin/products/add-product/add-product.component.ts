@@ -97,7 +97,7 @@ export class AddProductComponent implements OnInit {
         price: this.formProduct.value.price,
         images: localStorage.getItem('imgThum'),
         description: this.formProduct.value.description,
-        quantity: 1,
+        quantity: this.formProduct.value.quantity,
         imagesDetail: urlDetail
       }
 

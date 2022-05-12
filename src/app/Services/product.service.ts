@@ -15,6 +15,9 @@ export class ProductService {
   get(id: any): Observable<any> {
     return this.http.get<any>(`${environment.product_api}/${id}`);
   }
+  getFilter(id: any): Observable<any> {
+    return this.http.get<any>(`${environment.product_api}/filter/${id}`);
+  }
   getImages(id: any): Observable<any> {
     return this.http.get<any>(`${environment.product_api}/getImg/${id}`);
   }

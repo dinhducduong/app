@@ -18,11 +18,9 @@ export class AuthComponent implements OnInit {
   googleLogin() {
     this.socialService.signIn(GoogleLoginProvider.PROVIDER_ID)
       .then(resp => {
-        console.log(resp);
         this.authServices.authLogin(resp).subscribe(data => {
           localStorage.setItem('user', JSON.stringify(data));
           if (data) {
-
             this.router.navigate(['cp-admin']);
             this.toastr.success('Đăng nhập thành công', 'Thông báo');
           }

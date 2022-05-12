@@ -17,10 +17,10 @@ class UserController extends Controller
 
     public function create(Request $request)
     {
-        $data = User::all();
-        foreach ($data as $key => $value) {
-            if ($value['email'] === $request->email) {
-                return response()->json($value);
+        $data = User::get();
+        for ($i = 0; $i < count($data); $i++) {
+            if ($data[$i]['email'] === $request->email) {
+                return response()->json($request);
             } else {
                 $model = new User();
                 $model->name = $request->name;
