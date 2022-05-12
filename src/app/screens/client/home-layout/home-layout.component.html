@@ -69,7 +69,8 @@
           <a class="nav-icon d-none d-lg-inline" href="#" data-bs-toggle="modal" data-bs-target="#templatemo_search">
             <i class="fa fa-fw fa-search text-dark mr-2"></i>
           </a>
-          <a [routerLink]="'/login'">Đăng nhập</a>
+          <a *ngIf="!name" [routerLink]="'/login'">Đăng nhập</a>
+          <a *ngIf="name" [routerLink]="'/profile'">{{name}}</a>
           <a class="nav-link" data-toggle="dropdown" [routerLink]="'gio-hang'"> <i class="fa fa-cart-plus"
               aria-hidden="true"></i>
             <span class="badge badge-danger navbar-badge">{{countCart.length}}</span>

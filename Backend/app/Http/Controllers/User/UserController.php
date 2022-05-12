@@ -25,6 +25,7 @@ class UserController extends Controller
                 $model = new User();
                 $model->name = $request->name;
                 $model->email = $request->email;
+                $model->roles = 1;
                 $model->save();
                 return response()->json($request);
             }

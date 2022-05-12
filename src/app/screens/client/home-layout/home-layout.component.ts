@@ -7,11 +7,17 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class HomeLayoutComponent implements OnInit {
   countCart: any;
+  name: any;
   constructor(private toastr: ToastrService) { }
 
   ngOnInit(): void {
     let cart: any = JSON.parse(localStorage.getItem('cart') || "{}");
     this.countCart = cart;
+    let getName: any = JSON.parse(localStorage.getItem('user') || "{}");
+    if (getName != null) {
+      this.name = getName.name;
+    }
+
   }
 
 }
