@@ -1,4 +1,4 @@
-const BASE_API = "http://127.0.0.1:8000/api/"
+const BASE_API = "http://xoyibwxp.nethost-5011.000web.xyz/api/"
 
 export const environment = {
   production: true,
