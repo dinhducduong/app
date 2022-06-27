@@ -27,11 +27,11 @@ import { NgxPaginationModule } from 'ngx-pagination';
 import { ListProductComponent } from './screens/admin/products/list-product/list-product.component';
 import { AddProductComponent } from './screens/admin/products/add-product/add-product.component';
 import { EditProductComponent } from './screens/admin/products/edit-product/edit-product.component';
-import { environment } from 'src/environments/environment';
 import { AngularFireModule } from '@angular/fire/compat'
 import { GoogleLoginProvider, SocialAuthServiceConfig, SocialLoginModule } from 'angularx-social-login'
 import { AngularFireStorageModule } from '@angular/fire/compat/storage';
 import { AuthComponent } from './screens/auth/auth.component';
+import { environment } from 'src/environments/environment.prod';
 registerLocaleData(localeFr);
 @NgModule({
   declarations: [

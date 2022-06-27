@@ -61,9 +61,9 @@
               </div>
             </div>
             <div class="card-body">
-              <a href="shop-single.html" class="h3 text-decoration-none">Tên sản phẩm: {{item.name}}</a>
+              <h5 href="shop-single.html" class="h3 text-decoration-none">{{item.name}}</h5>
               <ul class="w-100 list-unstyled d-flex justify-content-between mb-0">
-                <span>#{{item.id}}</span>
+                <h6 class="text-danger">#{{item.id}}</h6>
               </ul>
               <ul class="list-unstyled d-flex justify-content-center mb-1">
                 <li>
@@ -84,6 +84,7 @@
           <pagination-controls (pageChange)="page = $event"></pagination-controls>
         </ul>
       </div>
+
     </div>
 
   </div>
