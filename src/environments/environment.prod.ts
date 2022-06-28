@@ -1,4 +1,4 @@
-const BASE_API = "http://xoyibwxp.nethost-5011.000web.xyz/api/"
+const BASE_API = "https://qnshop.tk/api/"
 
 export const environment = {
   production: true,
